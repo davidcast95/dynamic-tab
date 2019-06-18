@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,82 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="dynamic_tab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTR-YN-RLS" customClass="DynamicTabPageView" customModule="dynamic_tab" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <connections>
+                                    <outlet property="tabView" destination="Gg6-IF-SE0" id="B2E-ZF-Bny"/>
+                                </connections>
+                            </containerView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gg6-IF-SE0">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="z9G-Ym-kYn"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="scD-v7-lVI">
+                                    <size key="itemSize" width="152" height="62"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gg6-IF-SE0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B7P-5m-Gsu"/>
+                            <constraint firstItem="kTR-YN-RLS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BU8-uT-eVu"/>
+                            <constraint firstItem="kTR-YN-RLS" firstAttribute="top" secondItem="Gg6-IF-SE0" secondAttribute="bottom" id="K1h-C2-Ohi"/>
+                            <constraint firstItem="kTR-YN-RLS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="N8a-xI-suT"/>
+                            <constraint firstItem="Gg6-IF-SE0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OO2-PN-YI3"/>
+                            <constraint firstItem="Gg6-IF-SE0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bEz-sq-3xF"/>
+                            <constraint firstItem="kTR-YN-RLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vnI-fF-Qsu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="kTR-YN-RLS" id="gn3-gU-NRI"/>
+                        <outlet property="tabView" destination="Gg6-IF-SE0" id="uZa-xq-Td0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+        </scene>
+        <!--Content View Controller-->
+        <scene sceneID="6E6-GT-Qpw">
+            <objects>
+                <viewController storyboardIdentifier="content" id="QPu-MZ-nbr" customClass="ContentViewController" customModule="dynamic_tab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jje-pV-fsm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-Og-ses">
+                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1rJ-Og-ses" firstAttribute="centerY" secondItem="jje-pV-fsm" secondAttribute="centerY" id="HJb-KT-gJx"/>
+                            <constraint firstItem="1rJ-Og-ses" firstAttribute="centerX" secondItem="jje-pV-fsm" secondAttribute="centerX" id="Pmb-VX-bac"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rte-gl-cQb"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentLabel" destination="1rJ-Og-ses" id="zJK-Wy-70x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9h-tL-zDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="111"/>
         </scene>
     </scenes>
 </document>

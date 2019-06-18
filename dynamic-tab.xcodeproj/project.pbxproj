@@ -14,6 +14,14 @@
 		4824EE9E22B631F7003AC584 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4824EE9C22B631F7003AC584 /* LaunchScreen.storyboard */; };
 		4824EEA922B631F7003AC584 /* dynamic_tabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824EEA822B631F7003AC584 /* dynamic_tabTests.swift */; };
 		4824EEB422B631F7003AC584 /* dynamic_tabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824EEB322B631F7003AC584 /* dynamic_tabUITests.swift */; };
+		4824EEC222B6350B003AC584 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824EEC122B6350B003AC584 /* ContentViewController.swift */; };
+		4824EEC522B63840003AC584 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824EEC422B63840003AC584 /* TabButton.swift */; };
+		4824EEC722B63A45003AC584 /* TabButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4824EEC622B63A45003AC584 /* TabButton.xib */; };
+		4824EECE22B63E89003AC584 /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4824EECC22B63E89003AC584 /* TabView.xib */; };
+		4824EECF22B63E89003AC584 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824EECD22B63E89003AC584 /* TabView.swift */; };
+		4824EED522B6439C003AC584 /* TabButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824EED322B6439C003AC584 /* TabButtonCollectionViewCell.swift */; };
+		4824EED622B6439C003AC584 /* TabButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4824EED422B6439C003AC584 /* TabButtonCollectionViewCell.xib */; };
+		4857B2C122B889370087FEC5 /* DynamicTabPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857B2C022B889370087FEC5 /* DynamicTabPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,14 @@
 		4824EEAF22B631F7003AC584 /* dynamic-tabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dynamic-tabUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4824EEB322B631F7003AC584 /* dynamic_tabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dynamic_tabUITests.swift; sourceTree = "<group>"; };
 		4824EEB522B631F7003AC584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4824EEC122B6350B003AC584 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		4824EEC422B63840003AC584 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		4824EEC622B63A45003AC584 /* TabButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabButton.xib; sourceTree = "<group>"; };
+		4824EECC22B63E89003AC584 /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabView.xib; sourceTree = "<group>"; };
+		4824EECD22B63E89003AC584 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		4824EED322B6439C003AC584 /* TabButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		4824EED422B6439C003AC584 /* TabButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabButtonCollectionViewCell.xib; sourceTree = "<group>"; };
+		4857B2C022B889370087FEC5 /* DynamicTabPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTabPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +113,15 @@
 		4824EE9222B631F5003AC584 /* dynamic-tab */ = {
 			isa = PBXGroup;
 			children = (
+				4824EED022B642D4003AC584 /* Cell */,
+				4824EEC322B6381F003AC584 /* View */,
 				4824EE9322B631F5003AC584 /* AppDelegate.swift */,
 				4824EE9522B631F5003AC584 /* ViewController.swift */,
 				4824EE9722B631F5003AC584 /* Main.storyboard */,
 				4824EE9A22B631F7003AC584 /* Assets.xcassets */,
 				4824EE9C22B631F7003AC584 /* LaunchScreen.storyboard */,
 				4824EE9F22B631F7003AC584 /* Info.plist */,
+				4824EEC122B6350B003AC584 /* ContentViewController.swift */,
 			);
 			path = "dynamic-tab";
 			sourceTree = "<group>";
@@ -123,6 +142,27 @@
 				4824EEB522B631F7003AC584 /* Info.plist */,
 			);
 			path = "dynamic-tabUITests";
+			sourceTree = "<group>";
+		};
+		4824EEC322B6381F003AC584 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4824EEC422B63840003AC584 /* TabButton.swift */,
+				4824EEC622B63A45003AC584 /* TabButton.xib */,
+				4824EECD22B63E89003AC584 /* TabView.swift */,
+				4824EECC22B63E89003AC584 /* TabView.xib */,
+				4857B2C022B889370087FEC5 /* DynamicTabPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4824EED022B642D4003AC584 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4824EED322B6439C003AC584 /* TabButtonCollectionViewCell.swift */,
+				4824EED422B6439C003AC584 /* TabButtonCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +270,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4824EE9E22B631F7003AC584 /* LaunchScreen.storyboard in Resources */,
+				4824EEC722B63A45003AC584 /* TabButton.xib in Resources */,
+				4824EED622B6439C003AC584 /* TabButtonCollectionViewCell.xib in Resources */,
 				4824EE9B22B631F7003AC584 /* Assets.xcassets in Resources */,
 				4824EE9922B631F5003AC584 /* Main.storyboard in Resources */,
+				4824EECE22B63E89003AC584 /* TabView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4824EECF22B63E89003AC584 /* TabView.swift in Sources */,
 				4824EE9622B631F5003AC584 /* ViewController.swift in Sources */,
+				4824EEC522B63840003AC584 /* TabButton.swift in Sources */,
+				4824EEC222B6350B003AC584 /* ContentViewController.swift in Sources */,
+				4824EED522B6439C003AC584 /* TabButtonCollectionViewCell.swift in Sources */,
 				4824EE9422B631F5003AC584 /* AppDelegate.swift in Sources */,
+				4857B2C122B889370087FEC5 /* DynamicTabPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

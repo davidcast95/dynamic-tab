@@ -8,13 +8,38 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController, DynamicTabPageViewDataSource {
+
+    @IBOutlet weak var tabView: UICollectionView!
+    @IBOutlet weak var contentView: DynamicTabPageView!
+    let tabs = ["TEst1","asfdasdaasfdasda","asdasda"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        contentView.datasource = self
+        contentView.setup(viewController: self)
+        
     }
-
-
+    
+    func numberOfPage() -> Int {
+        return tabs.count
+    }
+    
+    func dynamicTab(titleForPage index: Int) -> String {
+        return tabs[index]
+    }
+    
+    func dynamicTab(viewControllerForPage index: Int) -> UIViewController {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "content")
+        return vc!
+    }
+    
+    func dynamicTab(prepareFor viewController: UIViewController,in index: Int) {
+        if let contentVC = viewController as? ContentViewController {
+            contentVC.content = tabs[index]
+        }
+    }
 }
 
