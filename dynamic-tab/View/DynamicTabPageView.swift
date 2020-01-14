@@ -15,8 +15,15 @@ protocol DynamicTabPageViewDataSource {
     func dynamicTab(prepareFor viewController: UIViewController,in index: Int)
 }
 
+@objc enum TabStyle: Int {
+    case condensed = 0
+    case expanded = 1
+}
+
 class DynamicTabPageView: UIView {
     @IBOutlet weak var tabView: UICollectionView!
+    
+    @IBInspectable var tabStyle: TabStyle = .condensed
     
     // delegate
     var datasource: DynamicTabPageViewDataSource?
@@ -92,7 +99,9 @@ class DynamicTabPageView: UIView {
         // generate indicator
         if let firstTitle = tabTitles.first {
             
-            indicatorLine.frame = CGRect(x: tabView.frame.origin.x, y: 0, width: calculateWidthTabLabel(label: firstTitle), height: 2)
+            let tabWidth = tabStyle == .condensed ? tabView.frame.size.width / CGFloat(tabTitles.count) : calculateOffsetTabLabel(index: 0)
+            
+            indicatorLine.frame = CGRect(x: tabView.frame.origin.x, y: 0, width: tabWidth, height: 2)
             indicatorLine.backgroundColor = indicatorColor
             self.addSubview(indicatorLine)
             self.bringSubviewToFront(indicatorLine)
@@ -101,13 +110,13 @@ class DynamicTabPageView: UIView {
     
     func calculateWidthTabLabel(label: String) -> CGFloat {
         let calculatedLabelSize = NSString(string: label).size(withAttributes: [NSAttributedString.Key.font : tabFont])
-        return calculatedLabelSize.width + 20 + (margin * 2)
+        return tabStyle == .condensed ? tabView.frame.size.width / CGFloat(tabTitles.count) + 20 + (margin * 2) : calculatedLabelSize.width + 20 + (margin * 2)
     }
     
     func calculateOffsetTabLabel(index: Int) -> CGFloat {
         var totalOffset:CGFloat = 0.0
         for i in 0..<index {
-            totalOffset += calculateWidthTabLabel(label: tabTitles[i])
+            totalOffset += tabStyle == .condensed ? tabView.frame.size.width / CGFloat(tabTitles.count) : calculateWidthTabLabel(label: tabTitles[i])
         }
         return totalOffset
     }
@@ -210,10 +219,9 @@ extension DynamicTabPageView: UICollectionViewDelegate, UICollectionViewDataSour
         
         pageViewController.setViewControllers([pagesViewController[indexPath.row]], direction: .forward, animated: false, completion: nil)
         
-        
         let lastWidth = calculateOffsetTabLabel(index: indexPath.row)
         let nextTabTitle = tabTitles[indexPath.row]
-        let nextWidth = calculateWidthTabLabel(label: nextTabTitle)
+        let nextWidth = tabStyle == .condensed ? collectionView.frame.size.width / CGFloat(tabTitles.count) : calculateWidthTabLabel(label: nextTabTitle)
         UIView.animate(withDuration: 0.25, animations: {
             self.indicatorLine.frame.origin.x = lastWidth - self.tabScrollOffset.x
             self.indicatorLine.frame.size.width = nextWidth
@@ -227,6 +235,9 @@ extension DynamicTabPageView: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension DynamicTabPageView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: calculateWidthTabLabel(label: tabTitles[indexPath.row]), height: collectionView.frame.height)
+        
+        let tabWidth = tabStyle == .condensed ? collectionView.frame.size.width / CGFloat(tabTitles.count) : calculateWidthTabLabel(label: tabTitles[indexPath.row])
+        
+        return CGSize(width: tabWidth, height: collectionView.frame.height)
     }
 }

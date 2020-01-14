@@ -13,7 +13,7 @@ class ViewController: UIViewController, DynamicTabPageViewDataSource {
 
     @IBOutlet weak var tabView: UICollectionView!
     @IBOutlet weak var contentView: DynamicTabPageView!
-    let tabs = ["TEst1","asfdasdaasfdasda","asdasda"]
+    let tabs = ["TEst1","asfdasdaasfdasda"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
